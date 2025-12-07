@@ -26,7 +26,7 @@ class _TodotileState extends State<Todotile> {
         child: Row(
           children: [
             //Check box
-            Checkbox(value: widget.taskcompleted, onChanged: widget.onChanged),
+            Checkbox(value: widget.taskcompleted, onChanged: widget.onChanged , activeColor: Colors.black,),
 
             //Text (Task)
             Padding(

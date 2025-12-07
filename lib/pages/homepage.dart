@@ -42,7 +42,7 @@ class _HomepageState extends State<Homepage> {
         itemCount: todoList.length,
         itemBuilder: (context, index) {
           return Todotile(
-            onChanged: (value) => checkChange,
+            onChanged: (value) => checkChange(value , index),//this is the code required 
             taskcompleted: todoList[index][1],
             taskname: todoList[index][0],
           );
