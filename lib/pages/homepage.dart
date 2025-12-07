@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
+import 'package:todo/components/alertdialog.dart';
 import 'package:todo/components/todotile.dart';
+import 'package:lucide_icons/lucide_icons.dart';
 
 class Homepage extends StatefulWidget {
   const Homepage({super.key});
@@ -9,6 +11,8 @@ class Homepage extends StatefulWidget {
 }
 
 class _HomepageState extends State<Homepage> {
+  var controller = TextEditingController();
+
   List todoList = [
     ["Make the OS notes", false],
     ["Play badminton", false],
@@ -19,6 +23,30 @@ class _HomepageState extends State<Homepage> {
     setState(() {
       todoList[index][1] = !todoList[index][1];
     });
+  }
+
+  void savemethod(){
+    setState(() {
+      todoList.add([controller.text , false]);
+    });
+  }
+
+  void onPressed() {
+    showDialog(
+      context: context,
+      builder: (context) {
+        return Alertdialogbox(
+          controller: controller,
+          oncancel: () {
+            Navigator.of(context).pop();
+          },
+          onsave: () {
+            savemethod();
+            Navigator.of(context).pop();
+          },
+        );
+      },
+    );
   }
 
   @override
@@ -42,11 +70,22 @@ class _HomepageState extends State<Homepage> {
         itemCount: todoList.length,
         itemBuilder: (context, index) {
           return Todotile(
-            onChanged: (value) => checkChange(value , index),//this is the code required 
+            onChanged: (value) =>
+                checkChange(value, index), //this is the code required
             taskcompleted: todoList[index][1],
             taskname: todoList[index][0],
+            deletefxn: (context) {
+              setState(() {
+              todoList.removeAt(index);
+              });
+            },
           );
         },
+      ),
+
+      floatingActionButton: FloatingActionButton(
+        onPressed: onPressed,
+        child: Icon(LucideIcons.plus),
       ),
     );
   }

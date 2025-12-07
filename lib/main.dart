@@ -14,7 +14,8 @@ class MyApp extends StatelessWidget {
       debugShowCheckedModeBanner: false,
       home: Homepage(),
       routes: {
-
+        'alertdialog' : (context) => AlertDialog(),
+        
       },
       );
   }
