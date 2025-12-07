@@ -14,9 +14,8 @@ class _HomepageState extends State<Homepage> {
   var controller = TextEditingController();
 
   List todoList = [
-    ["Make the OS notes", false],
-    ["Play badminton", false],
-    ["Play badminton", true],
+    ["Complete the APP", false],
+    
   ];
 
   void checkChange(bool? value, int index) {

@@ -38,7 +38,7 @@ class _TodotileState extends State<Todotile> {
           openThreshold: 0.1,
           closeThreshold: 0.3,
           children: [
-            SlidableAction(onPressed: deletefxn,backgroundColor: Colors.red,icon: LucideIcons.trash2,)
+            SlidableAction(onPressed: widget.deletefxn,backgroundColor: Colors.red,icon: LucideIcons.trash2,)
           ],
         ),
         child: Container(
